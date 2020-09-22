@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055) -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Divvy Bike Information Visualisation</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href="./css/css" rel="stylesheet" type="text/css">
+    <link href="./css/css(1)" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="./css/animate.min.css" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/creative.css" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top affix">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Divvy bike information visualisation</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="">
+                        <a class="page-scroll" href="#part1">Introductions</a>
+                    </li>
+                    <li class="">
+                        <a class="page-scroll" href="#part2">Maps</a>
+                    </li>
+                    <li class="">
+                        <a class="page-scroll" href="#part3">Stations</a>
+                    </li>
+                    <li class="">
+                        <a class="page-scroll" href="#part4">Trips</a>
+                    </li>
+                    <li class="">
+                        <a class="page-scroll" href="#part5">Users</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="overlay">
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1 style="font-size: 25px;">Divvy Bike Information visualisation</h1>
+                <hr>
+                <p>Bike share is great for quick trips around town or leisurely rides through the park. Use it to commute to work or school, run errands and explore the city.
+                    Bike share is great for quick trips around town or leisurely rides through the park. Use it to commute to work or school, run errands and explore the city
+                    Bike share is great for quick trips around town or leisurely rides through the park. Use it to commute to work or school, run errands and explore the city</p>
+                <a href="https://www.divvybikes.com/system-data" class="btn btn-primary btn-xl page-scroll">Data Source</a>
+            </div>
+        </div>
+    </div>
+    </header>
+
+    <section class="bg-primary" id="part1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">What is Divvy?</h2>
+                    <hr class="light">
+                    <p class="text-faded">Divvy is Chicagoland’s bike share system, with 6,000 bikes available at 570+ stations across Chicago and Evanston. Divvy provides residents and visitors with a convenient, fun and affordable transportation option for getting around and exploring Chicago.
+
+                        Divvy, like other bike share systems, consists of a fleet of specially designed, sturdy and durable bikes that are locked into a network of docking stations throughout the region. The bikes can be unlocked from one station and returned to any other station in the system. People use bike share to explore Chicago, commute to work or school, run errands, get to appointments or social engagements, and more.
+
+                        Divvy is available for use 24 hours/day, 7 days/week, 365 days/year, and riders have access to all bikes and stations across the system.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+     <section class="bg-dark" id="part2" style="padding-bottom: 5px">
+         <section>
+                 <div class="row">
+                     <div class="col-lg-8 col-lg-offset-2 text-center">
+                         <h2 class="section-heading">Routes and Stations Geo Visualisation</h2>
+                         <hr class="primary">
+                         <p>The routes is generated by the Open Source Routing Machine (OSRM). This is an open source route generation engine. Given the start and end points, a shortest path between two points can be generated in the road network. The road network data based on it is from OpenStreetMap.</p>
+                         <p class="instructions">You can zoom in and interact to see detailed information</p>
+                     </div>
+                     <div class="col-lg-10 col-lg-offset-1">
+                         <ul class="nav nav-pills nav-justified nav-outlined">
+                             <li class="active"><a data-toggle="tab" href="#maptrip" aria-expanded="true">Routes</a></li>
+                             <li class=""><a data-toggle="tab" href="#mapstation" aria-expanded="false">Stations</a></li>
+                         </ul>
+                         <div class="tab-content">
+                             <div id="maptrip" class="tab-pane fade active in">
+                                 <iframe class="embed-responsive-item" src="charts/mapbox.html" width="1180px" height="650px" frameborder="0px"></iframe>
+                             </div>
+                             <div id="mapstation" class="tab-pane fade">
+                                 <iframe class="embed-responsive-item" src="charts/stationmarker.html" width="1180px" height="650px" frameborder="0px"></iframe>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+         </section>
+    </section>
+
+    <section class="bg-primary" id="part3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">The Development of Divvy</h2>
+                    <hr class="light">
+                    <p class="text-faded">Divvy is a program of the Chicago Department of Transportation (CDOT), which owns the city’s bikes, stations and vehicles. Initial funding for the program came from federal grants for projects that promote economic recovery, reduce traffic congestion and improve air quality, as well as additional funds from the City’s Tax Increment Financing program. In 2016, Divvy expanded to the neighboring suburb of Evanston with a grant from the State of Illinois.</h2>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">Time Distribution of Top 10 Popular Stations</h2>
+                <hr class="primary">
+                <p class="extra-margin">You can zoom in and interact to see detailed information</p>
+            </div>
+            <div class="col-xs-12">
+                <div class="d3-frame text-center">
+                    <iframe class="embed-responsive-item" src="charts/top10station_byhour.html" width="960px" height="700px" frameborder="no" scrollable="no"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-dark">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">Duration Distribution of Top 10 Popular Stations</h2>
+                <hr class="primary">
+                <p class="extra-margin">You can zoom in and interact to see detailed information</p>
+            </div>
+            <div class="col-xs-12">
+                <div class="d3-frame text-center">
+                    <iframe class="embed-responsive-item" src="charts/top10station.html" width="960px" height="475px" frameborder="no" scrollable="no"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Overall View</h2>
+                    <hr class="primary">
+                    <p>Dpcapacity: number of total docks at each station as of 12/31/2017;
+                        Online_date: date the station was created in the system;
+                        There are 586 stations in total.</p>
+                    </p></div>
+                <div class="col-xs-12">
+                    <div class="d3-frame text-center">
+                        <iframe class="embed-responsive-item" src="charts/parallel.html" width="1000px" height="550px" scrollable="no" frameborder="no"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="part4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h2 class="section-heading light">Timestats of Divvy trips</h2>
+                    <hr class="primary">
+                    <p class="instructions">You can zoom in and interact to see detailed information</p>
+                </div>
+                <div class="col-lg-12">
+                    <iframe src="charts/tripsbytime.html" width="100%" height="500" frameborder="0" scrollable="no"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Sharing Times of Divvy Bikes</h2>
+                    <hr class="primary">
+                    <p class="extra-margin">You can zoom in and interact to see detailed information</p>
+                </div>
+                <div class="col-xs-12">
+                    <div class="d3-frame text-center">
+                        <iframe class="embed-responsive-item" src="charts/bike.html" width="960px" height="475px" frameborder="no" scrollable="no"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-primary" id="part5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading"> This data is provided according to the Divvy Data License Agreement.</h2>
+                    <hr class="light">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="user">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h2 class="section-heading light">User Type Stats</h2>
+                    <hr class="primary">
+                    <p>usertype: "Customer" is a rider who purchased a 24-Hour Pass; "Subscriber" is a rider who purchased an Annual Membership
+                        ;gender: gender of rider;birthyear: birth year of rider</p>
+                </div>
+                <div class="col-lg-12">
+                    <iframe src="charts/userinfo.html" width="100%" height="500" frameborder="0" scrollable="no"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Trip Duration Proportion by User Type</h2>
+                    <hr class="primary">
+                    <p>usertype: "Customer" is a rider who purchased a 24-Hour Pass; "Subscriber" is a rider who purchased an Annual Membership
+                         </p>
+                </div>
+                <div class="col-lg-10 col-lg-offset-1">
+                    <ul class="nav nav-pills nav-justified nav-outlined">
+                        <li class="active"><a data-toggle="tab" href="#usePastMonth" aria-expanded="true">Trip Duration within 1 hour</a></li>
+                        <li class=""><a data-toggle="tab" href="#usePastYear" aria-expanded="false">Trip Duration from 1 to 3 hours</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="usePastMonth" class="tab-pane fade active in">
+                            <iframe class="embed-responsive-item" src="charts/durationbyusertype_1hour.html" width="1000px" height="520px" frameborder="0"></iframe>
+                        </div>
+                        <div id="usePastYear" class="tab-pane fade">
+                            <iframe class="embed-responsive-item" src="charts/durationbyusertype1_hour.html" width="1000px" height="520px" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-dark" id="footer">
+        <div class="container">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+            <h6 class="text-faded">This website was created by Zheran Xu as the Project for Information Visualization, a course at School of Computer Science, Unniversity of Nottingham</a>.
+                <br><br>Visualizations is created with Mapbox and Highchartsl</a>.
+                <br><br>Data Souce  • Header image from DivvyBikes</h6>
+        </div></div>
+    </section>
+
+    <!-- jQuery and popovers -->
+    <script src="./js/jquery.js"></script>
+    <script src="./js/tether.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="./js/jquery.easing.min.js"></script>
+    <script src="./js/jquery.fittext.js"></script>
+    <script src="./js/wow.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="./js/creative.js"></script>
+
+<!-- load the d3 libraries -->  
+<script src="./js/d3.v3.min.js"></script>
+
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+
+</script>
+
+
+
+
+</body></html>
