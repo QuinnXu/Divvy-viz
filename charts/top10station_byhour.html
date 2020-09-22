@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/streamgraph.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/annotations.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+</head>
+<style>
+#container {
+	min-width: 310px;
+	max-width: 800px;
+	height: 600px;
+	margin: 0 auto
+}
+
+</style>
+<body>
+
+  <div id="container"></div>
+
+<script>
+var colors = Highcharts.getOptions().colors;
+Highcharts.chart('container', {
+
+    chart: {
+        type: 'streamgraph',
+        marginBottom: 30,
+        zoomType: 'x'
+    },
+
+    colors: [
+        colors[0],
+        colors[1],
+        colors[2],
+        colors[3],
+        colors[4],
+        Highcharts.color(colors[5]).brighten(0.2).get(),
+        Highcharts.color(colors[5]).brighten(0.1).get(),
+
+        colors[5],
+        colors[6],
+        colors[7],
+        colors[8],
+        colors[9],
+        colors[0],
+        colors[1],
+        colors[3],
+        Highcharts.color(colors[2]).brighten(-0.1).get(),
+        Highcharts.color(colors[2]).brighten(-0.2).get(),
+        Highcharts.color(colors[2]).brighten(-0.3).get()
+    ],
+
+    title: {
+        text: ''
+    },
+    exporting: { enabled: false },
+
+
+    xAxis: {
+        maxPadding: 0,
+        type: 'category',
+        crosshair: true,
+        categories: [
+            '00:00',
+            '01:00',
+            '02:00',
+            '03:00',
+            '04:00',
+            '05:00',
+            '06:00',
+            '07:00',
+            '08:00',
+            '09:00',
+            '10:00',
+            '11:00',
+            '12:00',
+            '13:00',
+            '14:00',
+            '15:00',
+            '16:00',
+            '17:00',
+            '18:00',
+            '19:00',
+            '20:00',
+            '21:00',
+            '22:00',
+            '23:00',
+            ''
+        ],
+        labels: {
+            align: 'left',
+            reserveSpace: false,
+            rotation: 270
+        },
+        lineWidth: 0,
+        margin: 20,
+        tickWidth: 0
+    },
+
+    yAxis: {
+        visible: false,
+        startOnTick: false,
+        endOnTick: false
+    },
+
+    legend: {
+        enabled: false
+    },
+
+    annotations: [{
+        labels: [{
+            point: {
+                x: 7,
+                xAxis: 0,
+                y: 0,
+                yAxis: 0
+            },
+            text: 'Morning peak'
+        }, {
+            point: {
+                x: 16,
+                xAxis: 0,
+                y: 0,
+                yAxis: 0
+            },
+            text: 'Evening peak'
+        }],
+        labelOptions: {
+            backgroundColor: 'rgba(255,255,255,0.5)',
+            borderColor: 'silver'
+        }
+    }],
+
+    plotOptions: {
+        series: {
+            label: {
+                minFontSize: 5,
+                maxFontSize: 15,
+                style: {
+                    color: 'rgba(255,255,255,0.75)'
+                }
+            }
+        }
+    },
+
+
+    series: [{
+        "name": "Streeter Dr & Grand Ave",
+        "data": [52 , 48 , 9 , 8 , 102 , 120 , 287 , 475 , 695 , 1283 , 1892 , 2488 , 3037 , 3319 , 3509 , 3479 , 3395 , 2523 , 2089 , 1245 , 768 , 499 , 208 , 0]
+    }, {
+        "name": "Lake Shore Dr & Monroe St",
+        "data": [
+             0  , 39 , 14 , 11 , 10 , 17 , 60 , 153 , 359 , 537 , 1020 , 1372 , 1557 , 1587 , 1802 , 1868 , 1888 , 1859 , 1588 , 1184 , 842 , 485 , 247 , 204 , 0
+        ]
+    }, {
+        "name": "Lake Shore Dr & North Blvd",
+        "data": [
+            27 , 21 , 10 , 4 , 38 , 111 , 246 , 389 , 377 , 519 , 915 , 1184 , 1304 , 1538 , 1591 , 1627 , 1672 , 1271 , 1313 , 1016 , 341 , 186 , 73 , 0
+        ]
+    }, {
+        "name": "Theater on the Lake",
+        "data": [
+        		0   , 16 , 23 , 21 , 8 , 25 , 89 , 259 , 308 , 400 , 585 , 876 , 1093 , 1239 , 1406 , 1515 , 1492 , 1658 , 1248 , 971 , 647 , 261 , 165 , 106 , 0
+        ]
+    }, {
+        "name": "Clinton St & Washington Blvd",
+        "data": [
+            3 , 4 , 1 , 0 , 20 , 1529 , 2787 , 2711 , 1006 , 347 , 317 , 322 , 277 , 270 , 370 , 900 , 1647 , 971 , 427 , 151 , 77 , 39 , 16 , 0
+        ]
+    }, {
+        "name": "Clinton St & Madison St",
+        "data": [8 , 5 , 8 , 2 , 16 , 548 , 1638 , 2047 , 626 , 296 , 357 , 474 , 501 , 439 , 461 , 1020 , 1734 , 1015 , 497 , 221 , 163 , 89 , 69 , 0
+        ]
+    }, {
+        "name": "Michigan Ave & Oak St",
+        "data": [
+            39 , 17 , 13 , 2 , 38 , 109 , 164 , 333 , 420 , 686 , 827 , 896 , 958 , 1063 , 1221 , 1305 , 1519 , 1140 , 734 , 421 , 242 , 195 , 119 , 0 ]
+    }, {
+        "name": "Millennium Park",
+        "data": [
+            50 , 16 , 19 , 10 , 8 , 25 , 68 , 194 , 322 , 507 , 680 , 805 , 929 , 1054 , 1074 , 1166 , 1606 , 1047 , 761 , 533 , 404 , 268 , 152 , 0]
+    }, {
+        "name": "Canal St & Adams St",
+        "data": [
+         1 , 1 , 6 , 4 , 272 , 1099 , 2137 , 1932 , 565 , 212 , 234 , 255 , 269 , 242 , 287 , 787 , 1752 , 844 , 424 , 169 , 142 , 46 , 29 , 0
+        ]
+    }, {
+        "name": "Michigan Ave & Washington St",
+        "data": [
+53 , 7 , 11 , 12 , 79 , 158 , 478 , 525 , 379 , 252 , 386 , 437 , 500 , 522 , 573 , 1400 , 2355 , 957 , 483 , 283 , 216 , 126 , 91 , 0
+        ]
+    }],
+
+
+});
+</script>
+</body>
+</html>

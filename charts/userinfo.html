@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+
+    <div id="container" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+
+</head>
+<body>
+<script>
+
+// Create the chart
+Highcharts.chart('container', {
+    chart: {
+        type: 'pie'
+    },
+    title: {
+        text: ''
+    },
+    exporting: { enabled: false },
+    plotOptions: {
+        series: {
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}: {point.y:.1f}%'
+            }
+        }
+    },
+
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+    },
+
+    "series": [
+        {
+            "name": "User Type",
+            "colorByPoint": true,
+            "data": [
+                {
+                    "name": "Subscriber",
+                    "y": 75.37,
+                    "drilldown": "Subscriber",
+                    "color": '#5DB6e0'
+                },
+                {
+                    "name": "Customer",
+                    "y": 24.63,
+                    "color": '#000000'
+                },
+
+            ]
+        }
+    ],
+    "drilldown": {
+        "series": [
+            {
+                "name": "Gender",
+                "id": "Subscriber",
+                "drilldown": "Subscriber",
+                "data": [
+                    {
+                    "name": "Male",
+                    "y": 55.98,
+                    "drilldown": "Male",
+                    "color": '#000000'
+                },
+                {
+                    "name": "Female",
+                    "y": 19.38,
+                    "drilldown": "Female",
+                    "color": '#5DB6e0'
+                },
+                {
+                    "name": "Unknown",
+                    "y": 0.01
+                }
+                ]
+            },
+            {
+                "name": "Age",
+                "id": "Male",
+                "data": [
+                    ["0-9", 0.21],
+                    ["10-19", 9.05],
+                    ["20-29", 5.9],
+                    ["30-39", 2.07],
+                    ["40-49", 1.67],
+                    ["50-59", 0.47],
+                    ["60-69", 0.02],
+                    ["70-79", 0.0],
+                    ["80-89", 0.0],
+                    ["90-99", 0.0,],
+                    ["100+", 0.0]
+                ]
+            },
+            {
+                "name": "Age",
+                "id": "Female",
+                "data": [
+                    ["0-9", 0.47],
+                    ["10-19", 21.46],
+                    ["20-29", 18.53],
+                    ["30-39", 8.23],
+                    ["40-49", 5.36],
+                    ["50-59", 1.71],
+                    ["60-69", 0.17],
+                    ["70-79", 0.01],
+                    ["80-89", 0.03],
+                    ["90-99", 0.0,],
+                    ["100+", 0.02]
+                ]
+            },
+        ]
+    }
+});
+</script>
+</body>
+</html>

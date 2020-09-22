@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/data.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+
+    <div id="container"></div>
+
+<style>
+      #container {
+        height: 800px;
+        min-width: 310px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .loading {
+        margin-top: 10em;
+        text-align: center;
+        color: gray;
+      }
+</style>
+</head>
+<body>
+
+<script>
+
+$.getJSON('onlychicagoplot.geo.json', function (geojson) {
+
+    // Prepare the geojson
+    var community = Highcharts.geojson(geojson, 'map'),
+        route = Highcharts.geojson(geojson, 'mapline'),
+        stations = Highcharts.geojson(geojson, 'mappoint')
+
+
+    // Initiate the chart
+    Highcharts.mapChart('container', {
+        chart: {
+            backgroundColor: 'black',
+        },
+        title: {
+            text: 'Divvy Stations in Chicago'
+        },
+
+        mapNavigation: {
+            enabled: true,
+            buttonOptions: {
+                verticalAlign: 'bottom'
+            }
+        },
+
+        series: [{
+            name: 'Community',
+            data: community,
+            color: 'black',
+            community: {
+                hover: {
+                    color: 'Black'
+                }
+            },
+            dataLabels: {
+                enabled: false,
+                format: '{point.name}',
+                style: {
+                    width: '40px' // force line-wrap
+                }
+            },
+            tooltip: {
+                pointFormat: '{point.properties.community}'
+            }
+        }, {
+            name: 'Street',
+            type: 'mapline',
+            data: route,
+            community: {
+                hover: {
+                    lineWidth: 0.5
+                }
+            },
+            color: 'rgba(204, 204 , 204, .8)',
+            tooltip: {
+                pointFormat: '{point.properties.STREET}'
+                }
+        }, {
+            name: 'Stations',
+            type: 'mappoint',
+            data: stations,
+            color: 'rgba(93, 182 , 224, .8)',
+            marker: {
+                radius: 2
+            },
+            dataLabels: {
+                align: 'left',
+                verticalAlign: 'middle'
+            },
+            animation: false,
+            tooltip: {
+                pointFormat: 'Name:{point.properties.name}<br>'+
+                            'Capacity:{point.properties.capacity}<br>'+
+                            'Trips:{point.properties.trips}<br>'+
+                            'Online Time:{point.properties.online time}<br>'
+
+            }
+        }]
+    });
+});
+
+
+</script>
+</body>
+</html>

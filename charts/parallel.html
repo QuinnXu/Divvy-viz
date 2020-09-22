@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/parallel-coordinates.js"></script>
+    <div id="container"></div>
+<style>
+#container {
+    max-width: 800px;
+    height: 400px;
+    margin: 1em auto;
+}
+
+.highcharts-series-hover path {
+  stroke: rgb(255, 66, 66);
+  stroke-width: 2px;
+}
+</style>
+</head>
+<body>
+<script>
+
+$.getJSON('parallel.json',
+    function (data) {
+
+        Highcharts.chart('container', {
+            chart: {
+                type: 'spline',
+                parallelCoordinates: true,
+                parallelAxes: {
+                    lineWidth: 2
+                }
+            },
+            title: {
+                text: ''
+            },
+
+            exporting: { enabled: false },
+
+            plotOptions: {
+                series: {
+                    animation: false,
+                    marker: {
+                        enabled: false,
+                        states: {
+                            hover: {
+                                enabled: false
+                            }
+                        }
+                    },
+                    states: {
+                        hover: {
+                            halo: {
+                                size: 0
+                            }
+                        }
+                    },
+                    events: {
+                        mouseOver: function () {
+                            this.group.toFront();
+                        }
+                    }
+                }
+            },
+            tooltip: {
+                pointFormat: '<span style="color:{point.color}">\u25CF</span>' +
+                    '{series.name}: <b>{point.formattedValue}</b><br/>'
+            },
+            xAxis: {
+                categories: [
+                    'Online Date',
+                    'Cities',
+                    'Trips Frequency',
+                    'Capacity',
+                ],
+                offset: 10
+            },
+            yAxis: [{
+                type: 'datetime',
+                tooltipValueFormat: '{value:%Y-%m-%d}'
+            },  {
+                categories: [
+                    'Chicago',
+                    'Oak Park',
+                    'Evanston'
+                ]
+            }, {
+                min: 0,
+                tooltipValueFormat: '{value}'
+            },{
+                min: 0,
+                tooltipValueFormat: '{value}'
+            }],
+            colors: ['rgba(92,181,220, 0.1)'],
+            series: data.map(function (set, i) {
+                return {
+                    name: 'Station ' + i,
+                    data: set,
+                    shadow: false
+                };
+            })
+        });
+    }
+);
+
+
+</script>
+</body>
+</html>

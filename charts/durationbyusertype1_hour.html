@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+    <div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+<style>
+</style>
+</head>
+<body>
+<script>
+// Data gathered from http://populationpyramid.net/germany/2015/
+
+// Age categories
+var categories =  ['60-64', '64-68', '68-72', '72-76', '76-80', '80-84', '84-88', '88-92', '92-96', '96-100', '100-104', '104-108', '108-112', '112-116', '116-120', '120-124', '124-128', '128-132', '132-136', '136-140', '140-144', '144-148', '148-152', '152-156', '156-160', '160-164', '164-168', '168-172', '172-176', '176-180']
+;
+
+Highcharts.chart('container', {
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: ''
+    },
+
+    exporting: { enabled: false },
+
+    xAxis: [{
+        categories: categories,
+        reversed: false,
+        labels: {
+            step: 1
+        }
+    }, { // mirror axis on right side
+        opposite: true,
+        reversed: false,
+        categories: categories,
+        linkedTo: 0,
+        labels: {
+            step: 1
+        }
+    }],
+    yAxis: {
+        title: {
+            text: null
+        },
+        labels: {
+            formatter: function () {
+                return Math.abs(this.value) + '%';
+            }
+        }
+    },
+
+    plotOptions: {
+        series: {
+            stacking: 'normal'
+        }
+    },
+
+    tooltip: {
+        formatter: function () {
+            return '<b>' + this.series.name + ', Duration ' + this.point.category + 'min'+'</b><br/>' +
+                'Proportion: ' + Highcharts.numberFormat(Math.abs(this.point.y), 0)+'%';
+        }
+    },
+
+    series: [{
+        name: 'Subscriber',
+        data: [-0.03, -0.03, -0.02, -0.02, -0.02, -0.01, -0.01, -0.01, -0.01, -0.01, -0.01, -0.0, -0.0, -0.01, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0, -0.0]
+
+
+    }, {
+        name: 'Customer',
+        data: [0.99, 0.82, 0.75, 0.65, 0.56, 0.5, 0.44, 0.39, 0.33, 0.3, 0.24, 0.25, 0.23, 0.2, 0.18, 0.15, 0.16, 0.13, 0.12, 0.12, 0.09, 0.07, 0.08, 0.08, 0.06, 0.06, 0.05, 0.04, 0.04, 0.03]
+
+    }]
+});
+
+
+</script>
+</body>
+</html>
